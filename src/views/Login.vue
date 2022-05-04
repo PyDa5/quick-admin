@@ -2,21 +2,21 @@
   <div class="login-body">
     <div class="login-container">
       <div class="head">
-        <img class="logo" src="https://s.weituibao.com/1582958061265/mlogo.png" />
+        <img class="logo" src="@/assets/logo.png" />
         <div class="name">
-          <div class="title">新蜂商城</div>
+          <div class="title">{{sysTitle}}</div>
           <div class="tips">Vue3.0 后台管理系统</div>
         </div>
       </div>
       <el-form label-position="top" :rules="rules" :model="ruleForm" ref="loginForm" class="login-form">
-        <el-form-item label="账号" prop="username">
-          <el-input type="text" v-model.trim="ruleForm.username" autocomplete="off"></el-input>
+        <el-form-item label="邮箱" prop="email">
+          <el-input type="text" v-model.trim="ruleForm.email" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">
           <el-input type="password" v-model.trim="ruleForm.password" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item>
-          <div style="color: #333">登录表示您已同意<a>《服务条款》</a></div>
+          <!-- <div style="color: #333">登录表示您已同意<a>《服务条款》</a></div> -->
           <el-button style="width: 100%" type="primary" @click="submitForm">立即登录</el-button>
           <el-checkbox v-model="checked" @change="!checked">下次自动登录</el-checkbox>
         </el-form-item>
@@ -30,18 +30,21 @@ import axios from '@/utils/axios'
 import md5 from 'js-md5'
 import { reactive, ref, toRefs } from 'vue'
 import { localSet } from '@/utils'
+import { sysTitle } from '@/menus.config'
+
 export default {
   name: 'Login',
   setup() {
     const loginForm = ref(null)
     const state = reactive({
+      sysTitle: sysTitle,
       ruleForm: {
-        username: '',
+        email: '',
         password: ''
       },
       checked: true,
       rules: {
-        username: [
+        email: [
           { required: 'true', message: '账户不能为空', trigger: 'blur' }
         ],
         password: [
@@ -52,12 +55,14 @@ export default {
     const submitForm = async () => {
       loginForm.value.validate((valid) => {
         if (valid) {
-          axios.post('/adminUser/login', {
-            userName: state.ruleForm.username || '',
-            passwordMd5: md5(state.ruleForm.password)
+          axios.post('/user/login', {
+            email: state.ruleForm.email || '',
+            password: state.ruleForm.password
           }).then(res => {
-            localSet('token', res)
+            localSet('token', 'res')
+            console.log(res)
             window.location.href = '/'
+            console.log()
           })
         } else {
           console.log('error submit!!')

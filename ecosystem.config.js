@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'vue3-admin',
+      name: 'QuickAdmin',
       script: 'vue3-admin-server.js'
     },
   ],

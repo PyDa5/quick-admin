@@ -49,11 +49,11 @@ export default {
       }
     })
     const getUserInfo = async () => {
-      const userInfo = await axios.get('/adminUser/profile')
+      const userInfo = await axios.get('/profile')
       state.userInfo = userInfo
     }
     const logout = () => {
-      axios.delete('/logout').then(() => {
+      axios.get('/user/logout').then(() => {
         localRemove('token')
         window.location.reload()
       })
@@ -105,7 +105,7 @@ export default {
 </style>
 <style>
   .popper-user-box {
-    background: url('https://s.yezgea02.com/lingling-h5/static/account-banner-bg.png') 50% 50% no-repeat!important;
+    background: url('@/assets/img/account-banner-bg.png') 50% 50% no-repeat!important;
     background-size: cover!important;
     border-radius: 0!important;
   }
