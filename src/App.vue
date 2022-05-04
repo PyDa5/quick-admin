@@ -4,8 +4,9 @@
       <el-aside class="aside">
         <div class="head">
           <div>
-            <img src="https://s.weituibao.com/1582958061265/mlogo.png" alt="logo">
-            <span>vue3 admin</span>
+            <img src="./assets/logo.png" alt="logo">
+
+            <span>{{state.sysTitle}}</span>
           </div>
         </div>
         <div class="line" />
@@ -16,46 +17,15 @@
           :router="true"
           :default-active='state.currentPath'
         >
-          <el-submenu index="1">
+          <el-submenu v-for="menu in state.sysMenus" :key="menu.id" :index="menu.id">
             <template #title>
-              <span>Dashboard</span>
+              <span>{{menu.title}}</span>
             </template>
-            <el-menu-item-group>
-              <el-menu-item index="/introduce"><i class="el-icon-data-line" />系统介绍</el-menu-item>
-              <el-menu-item index="/dashboard"><i class="el-icon-odometer" />Dashboard</el-menu-item>
-              <el-menu-item index="/add"><i class="el-icon-plus" />添加商品</el-menu-item>
+            <el-menu-item-group v-for="submenu in menu.sub" :key="submenu.code">
+              <el-menu-item :index="submenu.path"><i :class="submenu.icon" />{{submenu.title}}</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
-          <el-submenu index="2">
-            <template #title>
-              <span>首页配置</span>
-            </template>
-            <el-menu-item-group>
-              <el-menu-item index="/swiper"><i class="el-icon-picture" />轮播图配置</el-menu-item>
-              <el-menu-item index="/hot"><i class="el-icon-star-on" />热销商品配置</el-menu-item>
-              <el-menu-item index="/new"><i class="el-icon-sell" />新品上线配置</el-menu-item>
-              <el-menu-item index="/recommend"><i class="el-icon-thumb" />为你推荐配置</el-menu-item>
-            </el-menu-item-group>
-          </el-submenu>
-          <el-submenu index="3">
-            <template #title>
-              <span>模块管理</span>
-            </template>
-            <el-menu-item-group>
-              <el-menu-item index="/category"><i class="el-icon-menu" />分类管理</el-menu-item>
-              <el-menu-item index="/good"><i class="el-icon-s-goods" />商品管理</el-menu-item>
-              <el-menu-item index="/guest"><i class="el-icon-user-solid" />会员管理</el-menu-item>
-              <el-menu-item index="/order"><i class="el-icon-s-order" />订单管理</el-menu-item>
-            </el-menu-item-group>
-          </el-submenu>
-          <el-submenu index="4">
-            <template #title>
-              <span>系统管理</span>
-            </template>
-            <el-menu-item-group>
-              <el-menu-item index="/account"><i class="el-icon-lock" />修改密码</el-menu-item>
-            </el-menu-item-group>
-          </el-submenu>
+          
         </el-menu>
       </el-aside>
       <el-container class="content">
@@ -73,11 +43,15 @@
 </template>
 
 <script>
+
 import { onUnmounted, reactive } from 'vue'
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import { useRouter } from 'vue-router'
 import { pathMap, localGet } from '@/utils'
+
+import {sysTitle, sysMenus} from './menus.config'
+
 export default {
   name: 'App',
   components: {
@@ -89,9 +63,10 @@ export default {
     const noMenu = ['/login']
     const router = useRouter()
     const state = reactive({
+      ...{sysTitle, sysMenus},
       defaultOpen: ['1', '2', '3', '4'],
       showMenu: true,
-      currentPath: '/dashboard',
+      currentPath: '/',
       count: {
         number: 1
       }
@@ -105,6 +80,7 @@ export default {
         }
       }, false);
     }
+    
     const unwatch = router.beforeEach((to, from, next) => {
       if (to.path == '/login') {
         // 如果路径是 /login 则正常执行
