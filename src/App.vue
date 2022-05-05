@@ -17,7 +17,7 @@
           :router="true"
           :default-active='state.currentPath'
         >
-          <el-submenu v-for="menu in state.SYSTEM_MENUS" :key="menu.title">
+          <el-submenu v-for="menu in state.USER_MENUS" :key="menu.title">
             <template #title>
               <span>{{menu.title}}</span>
             </template>
@@ -55,7 +55,7 @@ import { useRouter } from 'vue-router'
 import { localGet } from '@/utils'
 import { INSTALLED_PAGES } from '@/global.config'
 
-import {SYSTEM_TITLE, SYSTEM_MENUS} from './global.config'
+import {SYSTEM_TITLE, USER_MENUS} from './global.config'
 
 /*
 [
@@ -77,7 +77,7 @@ import {SYSTEM_TITLE, SYSTEM_MENUS} from './global.config'
 */
 
 function getUserMenus(){
-  return SYSTEM_MENUS
+  return USER_MENUS
 }
 
 export default {
@@ -91,7 +91,7 @@ export default {
     const router = useRouter()
     const state = reactive({
       ...{SYSTEM_TITLE},
-      SYSTEM_MENUS: getUserMenus(),
+      USER_MENUS: getUserMenus(),
       showMenu: true,
       defaultOpen: [],
       currentPath: '/',
