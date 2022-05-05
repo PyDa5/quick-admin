@@ -55,26 +55,39 @@ import { useRouter } from 'vue-router'
 import { localGet } from '@/utils'
 import { INSTALLED_PAGES } from '@/global.config'
 
-import {SYSTEM_TITLE, USER_MENUS} from './global.config'
+import { SYSTEM_TITLE } from './global.config'
 
-/*
-[
-  {
-    id: xx
-    title: xx
-    code: xx
-    icon: xx
-    sub:[
-      {
-        id: xx
-        title:
-        code: xx
-        icon: xx
-      }
-    ]
-  }
+const USER_MENUS = [
+    {
+        title: '系统管理',
+        sub: [
+            {
+                icon: 'el-icon-menu',
+                title: 'Demo',
+                code: 'demo',
+                path: '/demo'
+            }
+        ]
+    },
+    {
+        title: '模块管理',
+        sub: [
+            {
+                icon: 'el-icon-menu',
+                title: '分类管理',
+                code: 'category',
+                path: '/category',
+            },
+            {
+                icon: 'el-icon-menu',
+                title: '商品管理',
+                code: 'good',
+                path: '/good',
+            }
+        ]
+
+    }
 ]
-*/
 
 function getUserMenus(){
   return USER_MENUS

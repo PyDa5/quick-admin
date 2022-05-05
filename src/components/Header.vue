@@ -37,14 +37,18 @@ import { CAN_BACK_PAGES, ROUTES_HEADER } from '@/global.config'
 
 export default {
   name: 'Header',
-  setup() {
+  props: [],
+  setup(props, {slots, attrs, emit}) {
     const router = useRouter()
+
+    // 配置响应式属性和计算属性
     const state = reactive({
       name: 'dashboard',
       userInfo: null,
       hasBack: false
     })
-    // 生命周期函数
+
+    // 生命周期函数：获取用户信息
     onMounted(() => {
       const pathname = window.location.hash.split('/')[1] || ''
       if (!['login'].includes(pathname)) {
@@ -54,8 +58,8 @@ export default {
 
     // 自定义方法
     const getUserInfo = async () => {
-      const userInfo = await axios.get('/profile')
-      state.userInfo = userInfo
+      const res = await axios.get('/profile')
+      state.userInfo = res.data.data
     }
     const logout = () => {
       axios.get('/user/logout').then(() => {
@@ -66,9 +70,8 @@ export default {
       router.back()
     }
 
-    // 配置Header标题
+    // 配置Header标题、回退操作
     router.afterEach((to) => {
-      console.log(to)
       state.name = ROUTES_HEADER[to.path]
       state.hasBack = CAN_BACK_PAGES.includes(to.path)
     })

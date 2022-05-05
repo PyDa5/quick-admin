@@ -25,43 +25,9 @@ const CAN_BACK_PAGES = [
 // 配置登陆接口(用于请求拦截器重定向)
 const LOGIN_URL = '/login'
 
-// 配置系统菜单(在APP.vue中请求)
-const SYSTEM_MENUS = [
-    {
-        title: '系统管理',
-        sub: [
-            {
-                icon: 'el-icon-menu',
-                title: 'Demo',
-                code: 'demo',
-                path: '/demo'
-            }
-        ]
-    },
-    {
-        title: '模块管理',
-        sub: [
-            {
-                icon: 'el-icon-menu',
-                title: '分类管理',
-                code: 'category',
-                path: '/category',
-            },
-            {
-                icon: 'el-icon-menu',
-                title: '商品管理',
-                code: 'good',
-                path: '/good',
-            }
-        ]
-
-    }
-]
-
 // 暴露接口
 export {
     SYSTEM_TITLE, 
-    SYSTEM_MENUS,
     INSTALLED_PAGES,
     // Header相关
     ROUTES_HEADER,
