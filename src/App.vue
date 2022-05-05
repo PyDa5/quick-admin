@@ -53,7 +53,6 @@ import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import { useRouter } from 'vue-router'
 import { localGet } from '@/utils'
-import { INSTALLED_PAGES } from '@/global.config'
 
 import { SYSTEM_TITLE } from './global.config'
 
@@ -140,7 +139,7 @@ export default {
       state.showMenu = !noMenu.includes(to.path)
       state.currentPath = to.path
       // console.log('to.name', to.name)
-      document.title =  INSTALLED_PAGES[to.name]
+      document.title =  SYSTEM_TITLE
     })
 
     onUnmounted(() => {
