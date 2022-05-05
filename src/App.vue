@@ -17,7 +17,7 @@
           :router="true"
           :default-active='state.currentPath'
         >
-          <el-submenu v-for="menu in state.USER_MENUS" :key="menu.title" :index="menu.title">
+          <el-submenu v-for="menu in state.userMenus" :key="menu.title" :index="menu.title">
             <template #title>
               <span>{{menu.title}}</span>
             </template>
@@ -53,24 +53,18 @@ import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import { useRouter } from 'vue-router'
 import { localGet } from '@/utils'
-import NaviBar from '@/utils/navibar'
+import userMenus from '@/utils/navibar'
 
 import { SYSTEM_TITLE } from './global.config'
 
-// **************************** 用户菜单 ****************************
-var menus = []
-// const menu_demo = new Menu('Demo')
-// menu_demo.add_item('demo', '/demo')
-// menus.push(menu_demo)
 
-const navibar = new NaviBar()
-
+// **************************** 配置用户菜单 ****************************
 // 示例菜单添加子菜单（链式调用方法添加菜单）
-navibar.add_menu('示例菜单')
+userMenus.add_menu('Demo')
 .add_item('demo', '/demo')
 .add_item('demo2', '/index')
 
-
+// ****************************   Export   ****************************
 export default {
   name: 'App',
   components: {
@@ -82,7 +76,7 @@ export default {
     const router = useRouter()
     const state = reactive({
       ...{SYSTEM_TITLE},
-      USER_MENUS: navibar.menus,
+      userMenus: userMenus.get(),
       showMenu: true,
       defaultOpen: [],
       currentPath: '/',

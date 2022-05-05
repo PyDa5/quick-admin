@@ -23,20 +23,25 @@ class Menu{
     }
 }
 
-class NaviBar{
+class UserMenus{
     // 导航栏
     constructor(){
-        this.menus = []
+        this._menus = []
+    }
+
+    get(){
+        return this._menus
     }
 
     // 添加菜单
     add_menu(title){
         const menu = new Menu(title)
-        this.menus.push(menu)
+        this._menus.push(menu)
         return menu
     }
 }
 
 
+const userMenus = new UserMenus()
 
-export default NaviBar
+export default userMenus
