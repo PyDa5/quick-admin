@@ -47,6 +47,7 @@ routes.push({
 for(var path in INSTALLED_PAGES){
   var component_name = INSTALLED_PAGES[path]
   path = path.startsWith('/') ? path : '/'+path
+  console.log(path_route(path, component_name))
   routes.push(path_route(path, component_name))
 }
 
