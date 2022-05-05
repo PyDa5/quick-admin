@@ -32,7 +32,9 @@
 import { onMounted, reactive, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from '@/utils/axios'
-import { localRemove, pathMap } from '@/utils'
+// import { localRemove } from '@/utils'
+import { CAN_BACK_PAGES, ROUTES_HEADER } from '@/global.config'
+
 export default {
   name: 'Header',
   setup() {
@@ -42,32 +44,33 @@ export default {
       userInfo: null,
       hasBack: false
     })
+    // 生命周期函数
     onMounted(() => {
       const pathname = window.location.hash.split('/')[1] || ''
       if (!['login'].includes(pathname)) {
         getUserInfo()
       }
     })
+
+    // 自定义方法
     const getUserInfo = async () => {
       const userInfo = await axios.get('/profile')
       state.userInfo = userInfo
     }
     const logout = () => {
       axios.get('/user/logout').then(() => {
-        localRemove('token')
         window.location.reload()
       })
     }
     const back = () => {
       router.back()
     }
+
+    // 配置Header标题
     router.afterEach((to) => {
-      const { id } = to.query
-      state.name = pathMap[to.name]
-      if (id && to.name == 'add') {
-        state.name = '编辑商品'
-      }
-      state.hasBack = ['level2', 'level3', 'order_detail'].includes(to.name)
+      console.log(to)
+      state.name = ROUTES_HEADER[to.path]
+      state.hasBack = CAN_BACK_PAGES.includes(to.path)
     })
     return {
       ...toRefs(state),

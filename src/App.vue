@@ -17,12 +17,16 @@
           :router="true"
           :default-active='state.currentPath'
         >
-          <el-submenu v-for="menu in state.SYSTEM_MENUS" :key="menu.id" :index="menu.id">
+          <el-submenu v-for="menu in state.SYSTEM_MENUS" :key="menu.title">
             <template #title>
               <span>{{menu.title}}</span>
             </template>
-            <el-menu-item-group v-for="submenu in menu.sub" :key="submenu.code">
-              <el-menu-item :index="submenu.path"><i :class="submenu.icon" />{{submenu.title}}</el-menu-item>
+            <el-menu-item-group v-for="submenu in menu.sub" :key="menu.title+':'+submenu.title">
+              <el-menu-item :index="submenu.path">
+                <i v-if="submenu.icon != undifined" :class="submenu.icon"/>
+                <i v-else class="el-icon-menu"/>
+                {{submenu.title}}
+              </el-menu-item>
             </el-menu-item-group>
           </el-submenu>
           
@@ -48,7 +52,8 @@ import { onUnmounted, reactive } from 'vue'
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import { useRouter } from 'vue-router'
-import { pathMap, localGet } from '@/utils'
+import { localGet } from '@/utils'
+import { INSTALLED_PAGES } from '@/global.config'
 
 import {SYSTEM_TITLE, SYSTEM_MENUS} from './global.config'
 
@@ -120,7 +125,8 @@ export default {
       }
       state.showMenu = !noMenu.includes(to.path)
       state.currentPath = to.path
-      document.title = pathMap[to.name]
+      // console.log('to.name', to.name)
+      document.title =  INSTALLED_PAGES[to.name]
     })
 
     onUnmounted(() => {

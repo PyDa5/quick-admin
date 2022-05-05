@@ -4,7 +4,7 @@
       <div class="head">
         <img class="logo" src="@/assets/logo.png" />
         <div class="name">
-          <div class="title">{{sysTitle}}</div>
+          <div class="title">{{SYSTEM_TITLE}}</div>
           <div class="tips">Vue3.0 后台管理系统</div>
         </div>
       </div>
@@ -59,10 +59,8 @@ export default {
             email: state.ruleForm.email || '',
             password: state.ruleForm.password
           }).then(res => {
-            localSet('token', 'res')
             console.log(res)
             window.location.href = '/'
-            console.log()
           })
         } else {
           console.log('error submit!!')
