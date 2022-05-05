@@ -6,7 +6,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { path_route } from '@/utils/route'
 
-
 /**
  * 功能： 配置嵌套路由或者命名不规则的路由
  * 示例：
@@ -47,10 +46,9 @@ routes.push({
 for(var path in INSTALLED_PAGES){
   var component_name = INSTALLED_PAGES[path]
   path = path.startsWith('/') ? path : '/'+path
-  console.log(path_route(path, component_name))
   routes.push(path_route(path, component_name))
 }
-
+console.log(routes)
 // 创建router
 const router = createRouter({
   history: createWebHashHistory(), 

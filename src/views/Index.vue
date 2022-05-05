@@ -144,9 +144,9 @@ export default {
         myChart.setOption(option)
       } 
     })
-    onUnmounted(() => {
-      myChart.dispose()
-    })
+    // onUnmounted(() => {
+    //   myChart.dispose()
+    // })
   }
 }
 </script>

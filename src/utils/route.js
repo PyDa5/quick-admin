@@ -1,3 +1,6 @@
+// 把view下所有的vue文件都导入
+const modules = import.meta.glob("../views/**/**.vue")
+
 function getComponetName(path){
     path = path.trim()
     if(path.startsWith('/')){
@@ -15,11 +18,10 @@ function getComponetName(path){
 
 
 function path_route(path, name){
-    console.log(`../views/${getComponetName(path)}.vue`)
     return {
         path: path,
         name: name,
-        component: () => import(`../views/${getComponetName(path)}.vue`)
+        component: modules[`../views/${getComponetName(path)}.vue`]
     }
 }
 

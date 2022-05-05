@@ -17,7 +17,7 @@
           :router="true"
           :default-active='state.currentPath'
         >
-          <el-submenu v-for="menu in state.USER_MENUS" :key="menu.title">
+          <el-submenu v-for="menu in state.USER_MENUS" :key="menu.title" :index="menu.title">
             <template #title>
               <span>{{menu.title}}</span>
             </template>
@@ -60,6 +60,12 @@ const USER_MENUS = [
     {
         title: '系统管理',
         sub: [
+            {
+                icon: 'el-icon-menu',
+                title: '首页',
+                code: 'home',
+                path: '/index'
+            },
             {
                 icon: 'el-icon-menu',
                 title: 'Demo',

@@ -1,15 +1,17 @@
 <template>
-订单导入666
-
+<div>
+    <Sheet />
+</div>
 </template>
 
 <script>
-// import Table from '@/componets/Table.vue'
+import Sheet from '@/components/Sheet.vue'
+
 export default {
-    name: 'OrderImport'
-    // components: [
-    //     Table,
-    // ]
+    name: 'OrderImport',
+    components:{
+        Sheet
+    }
 }
 </script>
 
