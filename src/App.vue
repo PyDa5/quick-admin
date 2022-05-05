@@ -53,57 +53,23 @@ import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import { useRouter } from 'vue-router'
 import { localGet } from '@/utils'
+import NaviBar from '@/utils/navibar'
 
 import { SYSTEM_TITLE } from './global.config'
 
-const USER_MENUS = [
-    {
-        title: 'Demo',
-        sub: [
-            {
-                icon: 'el-icon-menu',
-                title: '卡片',
-                code: 'home',
-                path: '/index'
-            },
-            {
-                icon: 'el-icon-menu',
-                title: '表格',
-                code: 'demo',
-                path: '/demo'
-            },
-            {
-                icon: 'el-icon-menu',
-                title: '文件上传',
-                code: 'uploadfile',
-                path: '/file/upload'
-            }
-        ]
-    },
-    {
-        title: '模块管理',
-        sub: [
-            {
-                icon: 'el-icon-menu',
-                title: '分类管理',
-                code: 'category',
-                path: '/category',
-            },
-            {
-                icon: 'el-icon-menu',
-                title: '商品管理',
-                code: 'good',
-                path: '/good',
-            }
-        ]
+// **************************** 用户菜单 ****************************
+var menus = []
+// const menu_demo = new Menu('Demo')
+// menu_demo.add_item('demo', '/demo')
+// menus.push(menu_demo)
 
-    }
-]
+const navibar = new NaviBar()
 
-function getUserMenus(){
-  
-  return USER_MENUS
-}
+// 示例菜单添加子菜单（链式调用方法添加菜单）
+navibar.add_menu('示例菜单')
+.add_item('demo', '/demo')
+.add_item('demo2', '/index')
+
 
 export default {
   name: 'App',
@@ -116,7 +82,7 @@ export default {
     const router = useRouter()
     const state = reactive({
       ...{SYSTEM_TITLE},
-      USER_MENUS: getUserMenus(),
+      USER_MENUS: navibar.menus,
       showMenu: true,
       defaultOpen: [],
       currentPath: '/',
