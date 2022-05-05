@@ -1,4 +1,7 @@
-class Menu{
+/**
+ * 功能：获取用户菜单
+ */
+class Menu{  // 单个菜单
     // 菜单
     constructor(title){
         this.title = title
@@ -23,7 +26,7 @@ class Menu{
     }
 }
 
-class UserMenus{
+class UserMenus{ // 用户所有菜单
     // 导航栏
     constructor(){
         this._menus = []
@@ -41,7 +44,35 @@ class UserMenus{
     }
 }
 
+function getUserMenus(){  // 发请求获取用户菜单
+    return [
+        {
+            pk: 1,
+            menu_name: 'Demo',
+            menu_code: 'demo',
+            icon: null,
+            submenu:[
+                {
+
+                }
+            ]
+
+        }
+    ]
+}
+
+function convertUserMenus(data){  // 把服务端菜单数据格式化为客户端的数据
+    return data
+}
+
 
 const userMenus = new UserMenus()
 
-export default userMenus
+userMenus.add_menu('Demo')
+.add_item('demo', '/demo')
+.add_item('demo2', '/index')
+
+
+export {
+    userMenus
+}

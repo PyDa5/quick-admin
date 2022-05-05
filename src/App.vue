@@ -53,16 +53,16 @@ import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import { useRouter } from 'vue-router'
 import { localGet } from '@/utils'
-import userMenus from '@/utils/navibar'
+import { userMenus} from '@/api/menu'
 
 import { SYSTEM_TITLE } from './global.config'
 
 
 // **************************** 配置用户菜单 ****************************
 // 示例菜单添加子菜单（链式调用方法添加菜单）
-userMenus.add_menu('Demo')
-.add_item('demo', '/demo')
-.add_item('demo2', '/index')
+// .add_menu(title, id, code, icon)
+// .add_item(title, path, [code], [icon], [id])
+
 
 // ****************************   Export   ****************************
 export default {
