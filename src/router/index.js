@@ -30,7 +30,10 @@ let routes = [
   'login': '登陆',
   'index': '首页',
   'demo': 'Demo',
-  'order/import': '订单导入'
+  'order/import': '订单导入',
+  // demo
+  'file/upload': '文件上传'
+
 }
 
 

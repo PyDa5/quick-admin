@@ -58,19 +58,25 @@ import { SYSTEM_TITLE } from './global.config'
 
 const USER_MENUS = [
     {
-        title: '系统管理',
+        title: 'Demo',
         sub: [
             {
                 icon: 'el-icon-menu',
-                title: '首页',
+                title: '卡片',
                 code: 'home',
                 path: '/index'
             },
             {
                 icon: 'el-icon-menu',
-                title: 'Demo',
+                title: '表格',
                 code: 'demo',
                 path: '/demo'
+            },
+            {
+                icon: 'el-icon-menu',
+                title: '文件上传',
+                code: 'uploadfile',
+                path: '/file/upload'
             }
         ]
     },
