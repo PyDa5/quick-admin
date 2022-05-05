@@ -30,14 +30,14 @@ import axios from '@/utils/axios'
 import md5 from 'js-md5'
 import { reactive, ref, toRefs } from 'vue'
 import { localSet } from '@/utils'
-import { sysTitle } from '@/menus.config'
+import { SYSTEM_TITLE } from '@/global.config'
 
 export default {
   name: 'Login',
   setup() {
     const loginForm = ref(null)
     const state = reactive({
-      sysTitle: sysTitle,
+      SYSTEM_TITLE: SYSTEM_TITLE,
       ruleForm: {
         email: '',
         password: ''

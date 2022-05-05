@@ -1,0 +1,8 @@
+menus:
+  系统管理:
+    id: 1
+    sub:
+      title: 修改密码
+      icon: el-icon-menu
+      code: change_password
+      path: /demo

@@ -6,7 +6,7 @@
           <div>
             <img src="./assets/logo.png" alt="logo">
 
-            <span>{{state.sysTitle}}</span>
+            <span>{{state.SYSTEM_TITLE}}</span>
           </div>
         </div>
         <div class="line" />
@@ -17,7 +17,7 @@
           :router="true"
           :default-active='state.currentPath'
         >
-          <el-submenu v-for="menu in state.sysMenus" :key="menu.id" :index="menu.id">
+          <el-submenu v-for="menu in state.SYSTEM_MENUS" :key="menu.id" :index="menu.id">
             <template #title>
               <span>{{menu.title}}</span>
             </template>
@@ -50,7 +50,30 @@ import Footer from '@/components/Footer.vue'
 import { useRouter } from 'vue-router'
 import { pathMap, localGet } from '@/utils'
 
-import {sysTitle, sysMenus} from './menus.config'
+import {SYSTEM_TITLE, SYSTEM_MENUS} from './global.config'
+
+/*
+[
+  {
+    id: xx
+    title: xx
+    code: xx
+    icon: xx
+    sub:[
+      {
+        id: xx
+        title:
+        code: xx
+        icon: xx
+      }
+    ]
+  }
+]
+*/
+
+function getUserMenus(){
+  return SYSTEM_MENUS
+}
 
 export default {
   name: 'App',
@@ -59,13 +82,13 @@ export default {
     Footer
   },
   setup() {
-    console.log('App')
     const noMenu = ['/login']
     const router = useRouter()
     const state = reactive({
-      ...{sysTitle, sysMenus},
-      defaultOpen: ['1', '2', '3', '4'],
+      ...{SYSTEM_TITLE},
+      SYSTEM_MENUS: getUserMenus(),
       showMenu: true,
+      defaultOpen: [],
       currentPath: '/',
       count: {
         number: 1

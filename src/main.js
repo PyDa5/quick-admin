@@ -3,13 +3,14 @@ import { ElButton, ElContainer, ElAside, ElHeader, ElMain, ElFooter, ElMenu, ElS
 import App from './App.vue'
 import router from './router/index'
 
+// 自定义ElementUI的皮肤
 // import 'element-plus/lib/theme-chalk/index.css'
-
-// 自定义皮肤替换ElementUI的皮肤
 import '../theme/index.css'
 
+// 注册APP
 const app = createApp(App)
 
+// 路由器
 app.use(router)
 
 app.use(ElButton)
@@ -43,14 +44,5 @@ app.use(ElButton)
     .use(ElCheckbox)
     .use(ElInputNumber)
 
-    // Sentry.init({
-    //   dsn: "https://f866b695d21d467ba523f1adf14e0a24@o584908.ingest.sentry.io/5737358",
-    //   integrations: [new Integrations.BrowserTracing()],
-    
-    //   // Set tracesSampleRate to 1.0 to capture 100%
-    //   // of transactions for performance monitoring.
-    //   // We recommend adjusting this value in production
-    //   tracesSampleRate: 1.0,
-    // });
-
+// 挂载APP
 app.mount('#app')

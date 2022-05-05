@@ -62,7 +62,6 @@ export default {
       router.back()
     }
     router.afterEach((to) => {
-      console.log('to', to)
       const { id } = to.query
       state.name = pathMap[to.name]
       if (id && to.name == 'add') {
