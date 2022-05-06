@@ -1,0 +1,1 @@
+import{S as o}from"./Sheet.6523d103.js";import{_ as t,r,o as n,a,d as s}from"./index.b7bd6ca6.js";const c={name:"OrderImport",components:{Sheet:o}};function p(m,_,d,f,l,i){const e=r("Sheet");return n(),a("div",null,[s(e)])}var S=t(c,[["render",p]]);export{S as default};

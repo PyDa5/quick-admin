@@ -23,13 +23,16 @@ export default ({ mode }) =>  defineConfig({
       }
     ])
   ],
+  // 根路由
   base: baseUrl[mode],
+  // vite路径解析
   resolve: {
     alias: {
       '~': path.resolve(__dirname, './'),
       '@': path.resolve(__dirname, 'src')
     }
   },
+  // server配置
   server: {
     proxy: {
       '/api': {

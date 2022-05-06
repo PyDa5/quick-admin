@@ -1,0 +1,1 @@
+import{S as o}from"./Sheet.6523d103.js";import{_ as t,r as n,o as r,c as s}from"./index.b7bd6ca6.js";const c={name:"Demo",components:{Sheet:o}};function a(p,m,_,f,i,d){const e=n("Sheet");return r(),s(e)}var u=t(c,[["render",a]]);export{u as default};

@@ -18,4 +18,6 @@ function AuthMiddleware(res){
     return res.data.data
 }
 
+
+
 export {AuthMiddleware}

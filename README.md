@@ -7,3 +7,5 @@
 * 4、跨域配置：vite.config.js
 * 5、切换皮肤：main.js
 * 6、拦截器/中间件：src/utils/axios.js  => middleware
+## 注意事项
+* theme目录中的主题是[newbee-ltd/vue3-admin](https://github.com/newbee-ltd/vue3-admin/tree/main/theme)的主题(其采用GPL-3.0 license)

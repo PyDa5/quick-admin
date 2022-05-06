@@ -49,22 +49,16 @@
 <script>
 
 import { onUnmounted, reactive } from 'vue'
+import { useRouter } from 'vue-router'
+
 import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
-import { useRouter } from 'vue-router'
+
 import { localGet } from '@/utils'
 import { getUserMenus } from '@/api/menu'
-
 import { SYSTEM_TITLE } from './global.config'
 
 
-// **************************** 配置用户菜单 ****************************
-// 示例菜单添加子菜单（链式调用方法添加菜单）
-// .add_menu(title, id, code, icon)
-// .add_item(title, path, [code], [icon], [id])
-
-
-// ****************************   Export   ****************************
 export default {
   name: 'App',
   components: {
@@ -98,11 +92,13 @@ export default {
       if (to.path == '/login') {
         // 如果路径是 /login 则正常执行
         next()
-      } else {
+      } 
+      else {
         // 如果不是 /login，判断是否有 token
         if (!localGet('token')) {
           // 如果没有，则跳至登录页面
-          next({ path: '/login' })
+          // next({ path: '/login' })
+          next()
         } else {
           // 否则继续执行
           next()
