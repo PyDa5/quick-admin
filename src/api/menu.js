@@ -72,6 +72,9 @@ function getUserMenus(){  // 发请求获取用户菜单
     // 发请求
 
     // 从请求中获取菜单数据
+    // userMenus.add_menu('Demo')
+    // .add_item('demo', '/demo')
+    // .add_item('demo2', '/index')
     userMenus.add_menu('Demo')
     .add_item('demo', '/demo')
     .add_item('demo2', '/index')
