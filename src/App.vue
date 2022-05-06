@@ -76,7 +76,7 @@ export default {
     const router = useRouter()
     const state = reactive({
       ...{SYSTEM_TITLE},
-      userMenus: userMenus.get(),
+      userMenus: userMenus,
       showMenu: true,
       defaultOpen: [],
       currentPath: '/',
