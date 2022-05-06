@@ -53,7 +53,7 @@ import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 import { useRouter } from 'vue-router'
 import { localGet } from '@/utils'
-import { userMenus} from '@/api/menu'
+import { getUserMenus } from '@/api/menu'
 
 import { SYSTEM_TITLE } from './global.config'
 
@@ -76,7 +76,7 @@ export default {
     const router = useRouter()
     const state = reactive({
       ...{SYSTEM_TITLE},
-      userMenus: userMenus,
+      userMenus: getUserMenus(),
       showMenu: true,
       defaultOpen: [],
       currentPath: '/',

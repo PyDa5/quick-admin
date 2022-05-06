@@ -60,7 +60,13 @@ class UserMenus{ // 用户所有菜单
     }
 }
 
-const userMenus = new UserMenus()
+
+/**
+ * 获取用户菜单，并转换为指定指定格式
+ * add_menu(title, code=null, icon=null, id=null)
+ * add_item(title, path, code=null, icon=null, id=null)
+ */
+ let userMenus = new UserMenus()
 
 function getUserMenus(){  // 发请求获取用户菜单
     // 发请求
@@ -70,11 +76,10 @@ function getUserMenus(){  // 发请求获取用户菜单
     .add_item('demo', '/demo')
     .add_item('demo2', '/index')
 
+    return userMenus.get()
 }
 
-getUserMenus()
-userMenus = userMenus.get()
 
 export {
-    userMenus
+    getUserMenus
 }
