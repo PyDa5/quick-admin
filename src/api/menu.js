@@ -3,24 +3,31 @@
  */
 class Menu{  // 单个菜单
     // 菜单
-    constructor(title){
+    constructor(title, code=null, icon=null, id=null){
         this.title = title
+        this.code = code
+        this.icon = icon
+        this.id = id
         this.sub = []
     }
 
     // 添加子菜单
-    add_item(title, path, code=null, icon=null){
+    add_item(title, path, code=null, icon=null, id=null){
         if(code == null){
-        code = title
+            code = title
         }
         if(icon == null){
-        icon = 'el-icon-menu'
+            icon = 'el-icon-menu'
+        }
+        if(id == null){
+            id = title
         }
         this.sub.push({
             title,
             path,
             code,
-            icon
+            icon,
+            id
         })
         return this
     }
@@ -37,41 +44,35 @@ class UserMenus{ // 用户所有菜单
     }
 
     // 添加菜单
-    add_menu(title){
-        const menu = new Menu(title)
+    add_menu(title, code=null, icon=null, id=null){
+        if(code == null){
+            code = title
+        }
+        if(icon == null){
+            icon = 'el-icon-menu'
+        }
+        if(id == null){
+            id = title
+        }
+        const menu = new Menu(title, code, icon, id)
         this._menus.push(menu)
         return menu
     }
 }
 
-function getUserMenus(){  // 发请求获取用户菜单
-    return [
-        {
-            pk: 1,
-            menu_name: 'Demo',
-            menu_code: 'demo',
-            icon: null,
-            submenu:[
-                {
-
-                }
-            ]
-
-        }
-    ]
-}
-
-function convertUserMenus(data){  // 把服务端菜单数据格式化为客户端的数据
-    return data
-}
-
-
 const userMenus = new UserMenus()
 
-userMenus.add_menu('Demo')
-.add_item('demo', '/demo')
-.add_item('demo2', '/index')
+function getUserMenus(){  // 发请求获取用户菜单
+    // 发请求
 
+    // 从请求中获取菜单数据
+    userMenus.add_menu('Demo')
+    .add_item('demo', '/demo')
+    .add_item('demo2', '/index')
+
+}
+
+getUserMenus()
 
 export {
     userMenus
