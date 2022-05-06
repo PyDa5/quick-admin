@@ -73,6 +73,7 @@ function getUserMenus(){  // 发请求获取用户菜单
 }
 
 getUserMenus()
+userMenus = userMenus.get()
 
 export {
     userMenus
