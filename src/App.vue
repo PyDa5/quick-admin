@@ -79,14 +79,14 @@ export default {
       }
     })
     // 监听浏览器原生回退事件
-    if (window.history && window.history.pushState) {
-      history.pushState(null, null, document.URL);
-      window.addEventListener('popstate', () => {
-        if (!localGet('token')) {
-          state.showMenu = false
-        }
-      }, false);
-    }
+    // if (window.history && window.history.pushState) {
+    //   history.pushState(null, null, document.URL);
+    //   window.addEventListener('popstate', () => {
+    //     if (!localGet('token')) {
+    //       state.showMenu = false
+    //     }
+    //   }, false);
+    // }
     
     const unwatch = router.beforeEach((to, from, next) => {
       if (to.path == '/login') {

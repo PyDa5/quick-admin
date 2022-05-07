@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import Sheet from '@/components/Sheet.vue'
+import MyTable from '@/components/MyTable.vue'
 
 export default {
     name: 'OrderImport',
     components:{
-        Sheet
+        MyTable
     }
 }
 </script>

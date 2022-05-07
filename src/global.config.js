@@ -3,7 +3,7 @@ const SYSTEM_TITLE = "QuickAdmin"
 
 // 配置路由对应的HEADER标题
 const ROUTES_HEADER = {
-    '/index': '工作台',
+    '/index': '我的看板',
     '/login': '登陆界面',
     '/demo': '演示界面',
 

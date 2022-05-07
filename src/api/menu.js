@@ -1,6 +1,11 @@
 /**
  * 功能：获取用户菜单
  */
+
+import axios from "axios"
+import { API_USER_MENUS } from "@/api/api"
+
+
 class Menu{  // 单个菜单
     // 菜单
     constructor(title, code=null, icon=null, id=null){
@@ -32,6 +37,7 @@ class Menu{  // 单个菜单
         return this
     }
 }
+
 
 class UserMenus{ // 用户所有菜单
     // 导航栏
@@ -68,17 +74,24 @@ class UserMenus{ // 用户所有菜单
  */
  let userMenus = new UserMenus()
 
+
+// ******************************** 配置 ********************************
 function getUserMenus(){  // 发请求获取用户菜单
     // 发请求
+    // axios.get(API_USER_MENUS)
+    // .then(res=>{
+    //     console.log(res.data.data)
+    // })
+    // .catch(err=>{
 
+    // })
     // 从请求中获取菜单数据
     // userMenus.add_menu('Demo')
     // .add_item('demo', '/demo')
     // .add_item('demo2', '/index')
     userMenus.add_menu('Demo')
+    .add_item('我的看板', '/index')
     .add_item('demo', '/demo')
-    .add_item('demo2', '/index')
-
     return userMenus.get()
 }
 

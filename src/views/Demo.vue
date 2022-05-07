@@ -1,13 +1,13 @@
 <template>
-  <Sheet/>
+  <MyTable/>
 </template>
 
 <script>
-import Sheet from '@/components/Sheet.vue'
+import MyTable from '@/components/MyTable.vue'
 export default {
   name: 'Demo',
   components: {
-    Sheet
+    MyTable
   }
 
 }
